@@ -1,12 +1,22 @@
+import { Link } from 'react-router-dom';
 import loginImg from '../../assets/images/login/login.svg'
+import { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const LogIn = () => {
+    const { signInUser } = useContext(AuthContext)
     const handleLoginSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        signInUser(email, password)
+            .then(result => {
+                const logInUser = result.user;
+                console.log(logInUser)
+            })
+            .then(error => console.log(error))
 
     }
 
@@ -39,6 +49,10 @@ const LogIn = () => {
                                 <input className="btn btn-primary" type="submit" value='Login' />
                             </div>
                         </form>
+
+                        <div className='text-center'>
+                            <p className='text-[#737373]'>New to Car Hut? <Link className='text-[#FF3811]' to='/singUp'>SingUp</Link></p>
+                        </div>
                     </div>
                 </div>
             </div>
