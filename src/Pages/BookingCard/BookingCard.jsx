@@ -26,7 +26,7 @@ const BookingCard = ({ booking, handleDelete, handleUpdate }) => {
             <td>{price}</td>
             <td>{date}</td>
             <th>
-                {status === 'confirm' ? <span className="btn btn-ghost bg-[#FF3811] text-white btn-xs">Order Approve</span> : < button onClick={() => handleUpdate(_id)} className="btn btn-ghost bg-[#FF3811] text-white btn-xs">Pending</button>}
+                {status === 'pending' ? <span className="bg-[#FF3811] text-white p-3 rounded-md">Order Approve</span> : < button onClick={() => handleUpdate(_id)} className="bg-[#FF3811] text-white p-3 rounded-md">pending</button>}
             </th>
         </tr >
     );
